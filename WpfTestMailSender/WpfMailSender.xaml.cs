@@ -1,17 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Net;
 using System.Net.Mail;
 
@@ -26,12 +15,12 @@ namespace WpfTestMailSender
 
         private void btnSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            List<string> listStrMails = new List<string> { "testEmail@gmail.com", "email@yandex.ru" };  // Список email'ов //кому мы отправляем письмо
-            string strPassword = passwordBox.Password;  // для WinForms - string strPassword = passwordBox.Text;
+            List<string> listStrMails = new List<string> { "test.textovitch@yandex.ru" };  // Список email'ов кому мы отправляем письмо
+            string strPassword = passwordBox.Password;
             foreach (string mail in listStrMails)
             {
                 // Используем using, чтобы гарантированно удалить объект MailMessage после использования
-                using (MailMessage mm = new MailMessage("sender@yandex.ru", mail))
+                using (MailMessage mm = new MailMessage("test.textovitch@yandex.ru", mail))
                 {
                     // Формируем письмо
                     mm.Subject = "Привет из C#"; // Заголовок письма
@@ -40,10 +29,10 @@ namespace WpfTestMailSender
                                                      // Авторизуемся на smtp-сервере и отправляем письмо
                                                      // Оператор using гарантирует вызов метода Dispose, даже если при вызове 
                                                      // методов в объекте происходит исключение.
-                    using (SmtpClient sc = new SmtpClient("smtp.yandex.ru", 25))
+                    using (SmtpClient sc = new SmtpClient("smtp.yandex.ru", 587))
                     {
                         sc.EnableSsl = true;
-                        sc.Credentials = new NetworkCredential("sender@yandex.ru", strPassword);
+                        sc.Credentials = new NetworkCredential("test.textovitch@yandex.ru", strPassword);
                         try
                         {
                             sc.Send(mm);
@@ -53,7 +42,7 @@ namespace WpfTestMailSender
                             MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
                         }
                     }
-                } //using (MailMessage mm = new MailMessage("sender@yandex.ru", mail))
+                }
             }
             MessageBox.Show("Работа завершена.");
 
