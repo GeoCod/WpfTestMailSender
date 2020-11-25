@@ -3,12 +3,75 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:WpfTestMailSender"
         mc:Ignorable="d"
         Title="Рассылка писем" Height="450" Width="800">
     <Grid>
-        <Button x:Name="btnSendEmail" Content="Отправить email" Click="btnSendEmail_Click"
-                HorizontalAlignment="Left" Margin="302,70,0,0" VerticalAlignment="Top" Width="Auto" Height="34" />
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="302,131,0,0" VerticalAlignment="Top" Width="124" Height="27" />
+        <TabControl>
+            <TabItem ToolTip="Управление рассылкой писем">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Solid_MailBulk" Height="15" Margin="0 0 5 0" Foreground="#FF6A4628"/>
+                        <TextBlock Text="Формирование группы рассылки" FontSize="14" FontWeight="Bold"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Button x:Name="btnSendEmail" Content="Отправить email" Click="btnSendEmail_Click"
+                            HorizontalAlignment="Left" Margin="302,70,0,0" VerticalAlignment="Top" Width="Auto" Height="34" />
+                    <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="302,131,0,0" VerticalAlignment="Top" Width="124" Height="27" />
+                </Grid>
+            </TabItem>
+
+            <TabItem ToolTip="Планирование рассылки писем">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Regular_CalendarAlt" Height="15" Margin="0 0 5 0" Foreground="#FF892B2B"/>
+                        <TextBlock Text="Планировщик" FontSize="14" FontWeight="Bold" Foreground="Black"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem ToolTip="Подготовка писем для рассылки писем">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Solid_Edit" Height="15" Margin="0 0 5 0" Foreground="#FF3D3491"/>
+                        <TextBlock Text="Редактор писем" FontSize="14" FontWeight="Bold"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem ToolTip="Сводная информация по отправленным письмам">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Regular_ChartBar" Height="15" Margin="0 0 5 0">
+                            <fa:SvgAwesome.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                            <RotateTransform Angle="51" CenterY="0.5" CenterX="0.5"/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF10FFE9"/>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                </LinearGradientBrush>
+                            </fa:SvgAwesome.Foreground>
+                        </fa:SvgAwesome>
+                        <TextBlock Text="Статистика" FontSize="14" FontWeight="Bold"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
