@@ -32,17 +32,18 @@ namespace WpfTestMailSender
                     client.Timeout = 5000;
                     client.EnableSsl = true;
                     client.Credentials = new NetworkCredential(login, password);
+                    client.Send(mail);
                 }
 
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
+                string except = ex.Message;
+                ExceptionWindow exceptionWindow = new ExceptionWindow(except);
+                exceptionWindow.Show();
             }
-
-            SendEndWindow sew = new SendEndWindow();
-            sew.ShowDialog();
+            //SendEndWindow sendEnd = new SendEndWindow();
+            //sendEnd.ShowDialog();
         }
     }
 }
