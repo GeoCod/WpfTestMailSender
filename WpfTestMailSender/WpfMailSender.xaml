@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:WpfTestMailSender"
         mc:Ignorable="d"
         Title="Рассылка писем" Height="620" Width="1080" MinWidth="300" MinHeight="500">
+   
     <Grid>
         <TabControl>
             <TabItem ToolTip="Управление рассылкой писем">
@@ -210,7 +211,35 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
+                    <Border BorderBrush="#FF494947" BorderThickness="3" CornerRadius="10" Margin="5">
+                        <GroupBox Header="Статистика">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
 
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="2"/>
+                                    </Style>
+                                </Grid.Resources>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Количество серверов"></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="3"></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Количество отправителей"></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="10"></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Количество получателей"></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="2" Text="7"></TextBlock>
+                            </Grid>
+                        </GroupBox>
+                    </Border>
                 </Grid>
             </TabItem>
         </TabControl>
