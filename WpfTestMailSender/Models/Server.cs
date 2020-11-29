@@ -11,5 +11,7 @@ namespace WpfTestMailSender.Models
         public string Address { get; set; }
 
         public int Port { get; set; }
+
+        public string FullAddress { get { return $"{Address} : {Port}"; } }
     }
 }

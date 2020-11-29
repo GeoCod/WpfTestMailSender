@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:WpfTestMailSender"
+        xmlns:data="clr-namespace:WpfTestMailSender.Data"
         mc:Ignorable="d"
         Title="Рассылка писем" Height="620" Width="1080" MinWidth="300" MinHeight="500">
     
@@ -38,7 +39,8 @@
                     </Grid.RowDefinitions>
                     <ToolBarTray Background="{x:Null}">
                         <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
-                            <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"/>
+                            <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"
+                                      ItemsSource="{x:Static data:TestData.Senders}" DisplayMemberPath="Name"/>
                             <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_UserPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -51,7 +53,8 @@
                         </ToolBar>
                         
                         <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="520">
-                            <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"/>
+                            <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"
+                                      ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="FullAddress"/>
                             <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_CalendarPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -86,24 +89,13 @@
                     </ToolBarTray>
 
 
-                    <GroupBox Grid.Row="1">
-                        <StackPanel>
-                            <StackPanel Width="200" Margin="10">
-                                <TextBlock Text="Login" />
-                                <TextBox Name="LoginTb" Text="test.textovitch@yandex.ru"></TextBox>
-                            </StackPanel>
-                            <StackPanel Width="200" Margin="10">
-                                <TextBlock Text="Password" />
-                                <PasswordBox x:Name="passwordBox" Height="27" />
-                            </StackPanel>
-                            <StackPanel Width="200" Margin="10">
-                                <TextBlock Text="Address" />
-                                <TextBox Name="AddressTb" Text="test.textovitch@yandex.ru"></TextBox>
-                            </StackPanel>
-                            <Button x:Name="btnSendEmail" Content="Отправить email" Click="btnSendEmail_Click" 
-                                        HorizontalAlignment="Center" Height="30" Width="200" Margin="0 10 0 0" />
-                        </StackPanel>
-                    </GroupBox>
+                    <DataGrid Grid.Row="1" ItemsSource="{x:Static data:TestData.Recipients}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="Auto"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="200"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Address}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 

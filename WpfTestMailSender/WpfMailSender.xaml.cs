@@ -15,11 +15,11 @@ namespace WpfTestMailSender
 
         private void btnSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            var login = LoginTb.Text;
-            var password = passwordBox.Password;
-            var address = AddressTb.Text;
+            //var login = LoginTb.Text;
+            //var password = passwordBox.Password;
+            //var address = AddressTb.Text;
 
-            Mail.SendMail(login, password, address);
+            //Mail.SendMail(login, password, address);
         }
     }
 }
