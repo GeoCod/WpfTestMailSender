@@ -40,7 +40,7 @@
                     <ToolBarTray Background="{x:Null}">
                         <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
                             <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"
-                                      ItemsSource="{x:Static data:TestData.Senders}" DisplayMemberPath="Name"/>
+                                      ItemsSource="{x:Static data:TestData.Senders}" SelectedIndex="0" DisplayMemberPath="Name"/>
                             <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_UserPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -54,7 +54,7 @@
                         
                         <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="520">
                             <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"
-                                      ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="FullAddress"/>
+                                      ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0" DisplayMemberPath="FullAddress"/>
                             <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_CalendarPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -116,13 +116,23 @@
                             <Calendar>
 
                             </Calendar>
-                            <Button Content="Отправить" Margin="2"></Button>
-                            <Button Content="Запланировать" Margin="2"></Button>
+                            <Button Margin="2">
+                                <DockPanel>
+                                    <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
+                                    <fa:ImageAwesome DockPanel.Dock="Right" Height="15" Icon="Brands_TelegramPlane" Margin="5 0"/>
+                                </DockPanel>
+                            </Button>
+                            <Button Margin="2">
+                                <DockPanel>
+                                    <TextBlock HorizontalAlignment="Center">Запланировать</TextBlock>
+                                    <fa:SvgAwesome Icon="Regular_Clock" Height="15" DockPanel.Dock="Right" Margin="5 0"/>
+                                </DockPanel>
+                            </Button>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Управление" Grid.Column="1">
                         <StackPanel>
-                            <GroupBox Width="200" HorizontalAlignment="Left">
+                            <GroupBox Width="200" HorizontalAlignment="Left" Margin="0 3">
                                 <GroupBox.Header>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Задание"/>

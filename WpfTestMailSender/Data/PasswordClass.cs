@@ -8,6 +8,9 @@ namespace WpfTestMailSender.Data
 {
     public static class PasswordClass
     {
+        /// <summary>На вход подаем закодированный пароль, на выходе получаем дешифрованный пароль</summary>
+        /// <param name="encodedPassw">Расшифрованный пароль</param>
+        /// <returns></returns>
         public static string Encode(string encodedPassw)
         {
             string password = "";
@@ -20,11 +23,9 @@ namespace WpfTestMailSender.Data
 
             return password;
         }
-        /// <summary>
-        /// На вход подаем пароль, на выходе получаем зашифрованный пароль
-        /// </summary>
-        /// <param name="codedPassword"></param>
-        /// <returns></returns>
+        /// <summary>На вход подаем пароль, на выходе получаем зашифрованный пароль</summary>
+        /// <param name="codedPassword">Закодированный пароль</param>
+        /// <returns>Раскодированный пароль</returns>
         public static string Decode(string codedPassword)
         {
             string sCode = "";
