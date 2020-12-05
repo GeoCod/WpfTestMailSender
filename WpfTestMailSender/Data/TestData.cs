@@ -37,5 +37,13 @@ namespace WpfTestMailSender.Data
                 return Enumerable.Range(0, 10).Select(i => new Recipient() { Address = $"address{i}", Name = $"name {i}", Id = i }).ToList();
             }
         }
+
+        public static List<Messgae> Messagess
+        {
+            get
+            {
+                return Enumerable.Range(0, 10).Select(i => new Messgae() { Subject = $"subject {i}", Body = $"body {i}"}).ToList();
+            }
+        }
     }
 }
