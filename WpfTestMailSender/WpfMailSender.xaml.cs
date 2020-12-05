@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Support;
+using System.Windows;
 
 namespace WpfTestMailSender
 {
@@ -7,6 +8,12 @@ namespace WpfTestMailSender
         public WpfMailSender()
         {
             InitializeComponent();
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mail = new Mail();
+            //mail.SendMail();
         }
     }
 }

@@ -86,7 +86,6 @@
     <Compile Include="ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mail.cs" />
     <Compile Include="Models\Messgae.cs" />
     <Compile Include="Models\Recipient.cs" />
     <Compile Include="Models\Sender.cs" />
@@ -126,6 +125,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Support\Support.csproj">
+      <Project>{ac96047b-a16c-4fae-843d-1a3e1e743c4e}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
