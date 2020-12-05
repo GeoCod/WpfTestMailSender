@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:WpfTestMailSender"
+        xmlns:data="clr-namespace:WpfTestMailSender.Data"
         mc:Ignorable="d"
         Title="Рассылка писем" Height="620" Width="1080" MinWidth="300" MinHeight="500">
+    
     <Grid>
         <TabControl>
             <TabItem ToolTip="Управление рассылкой писем">
@@ -23,7 +25,8 @@
                     </Grid.RowDefinitions>
                     <ToolBarTray Background="{x:Null}">
                         <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
-                            <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"/>
+                            <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"
+                                      ItemsSource="{x:Static data:TestData.Senders}" SelectedIndex="0" DisplayMemberPath="Name"/>
                             <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_UserPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -36,7 +39,8 @@
                         </ToolBar>
                         
                         <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="520">
-                            <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"/>
+                            <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"
+                                      ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0" DisplayMemberPath="FullAddress"/>
                             <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_CalendarPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -71,24 +75,13 @@
                     </ToolBarTray>
 
 
-                    <GroupBox Grid.Row="1">
-                        <StackPanel>
-                            <StackPanel Width="200" Margin="10">
-                                <TextBlock Text="Login" />
-                                <TextBox Name="LoginTb" Text="test.textovitch@yandex.ru"></TextBox>
-                            </StackPanel>
-                            <StackPanel Width="200" Margin="10">
-                                <TextBlock Text="Password" />
-                                <PasswordBox x:Name="passwordBox" Height="27" />
-                            </StackPanel>
-                            <StackPanel Width="200" Margin="10">
-                                <TextBlock Text="Address" />
-                                <TextBox Name="AddressTb" Text="test.textovitch@yandex.ru"></TextBox>
-                            </StackPanel>
-                            <Button x:Name="btnSendEmail" Content="Отправить email" Click="btnSendEmail_Click" 
-                                        HorizontalAlignment="Center" Height="30" Width="200" Margin="0 10 0 0" />
-                        </StackPanel>
-                    </GroupBox>
+                    <DataGrid Grid.Row="1" ItemsSource="{x:Static data:TestData.Recipients}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="Auto"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="200"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Address}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
@@ -100,7 +93,69 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="180"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Календарь" Grid.Column="0">
+                        <StackPanel Width="180">
+                            <Calendar>
 
+                            </Calendar>
+                            <Button x:Name="SendButton" Margin="2" Click="SendButton_Click">
+                                <DockPanel>
+                                    <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
+                                    <fa:ImageAwesome DockPanel.Dock="Right" Height="15" Icon="Brands_TelegramPlane" Margin="5 0"/>
+                                </DockPanel>
+                            </Button>
+                            <Button Margin="2">
+                                <DockPanel>
+                                    <TextBlock HorizontalAlignment="Center">Запланировать</TextBlock>
+                                    <fa:SvgAwesome Icon="Regular_Clock" Height="15" DockPanel.Dock="Right" Margin="5 0"/>
+                                </DockPanel>
+                            </Button>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Управление" Grid.Column="1">
+                        <StackPanel>
+                            <GroupBox Width="200" HorizontalAlignment="Left" Margin="0 3">
+                                <GroupBox.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Задание"/>
+                                        <fa:SvgAwesome Icon="Solid_TrashAlt" Height="12" Margin="5 0" Foreground="#FFBD3A3A"/>
+                                    </StackPanel>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="2"/>
+                                        </Style>
+                                    </Grid.Resources>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Время"></TextBlock>
+                                    <TextBlock Grid.Column="1" Grid.Row="0" Text="2020-01-01 00:00:00"></TextBlock>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Отправитель"></TextBlock>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Text="Иванов"></TextBlock>
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Получатель"></TextBlock>
+                                    <TextBlock Grid.Column="1" Grid.Row="2" Text="Петров"></TextBlock>
+                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Сообщение"></TextBlock>
+                                    <TextBlock Grid.Column="1" Grid.Row="3" Text="Текст сообщения"></TextBlock>
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <GridSplitter Grid.Column="0" Width="1" HorizontalAlignment="Right" Foreground="Black"></GridSplitter>
                 </Grid>
             </TabItem>
 
@@ -111,9 +166,23 @@
                         <TextBlock Text="Редактор писем" FontSize="14" FontWeight="Bold"/>
                     </StackPanel>
                 </TabItem.Header>
-                <Grid>
-
-                </Grid>
+                <DockPanel>
+                    <GroupBox DockPanel.Dock="Left" Header="Письма">
+                        <ListBox x:Name="MessageList" DockPanel.Dock="Left" Width="200" ItemsSource="{x:Static data:TestData.Messagess}" DisplayMemberPath="Subject">
+ 
+                        </ListBox>
+                    </GroupBox>
+                    <GroupBox DockPanel.Dock="Right" Header="Редактирование писем">
+                        <DockPanel>
+                            <GroupBox Header="Тема письма" DockPanel.Dock="Top">
+                                <TextBox Text="{Binding ElementName=MessageList, Path=SelectedItem.Subject, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            </GroupBox>
+                            <GroupBox Header="Текст письма" DockPanel.Dock="Bottom">
+                                <TextBox Text="{Binding ElementName =MessageList, Path=SelectedItem.Body, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+                            </GroupBox>
+                        </DockPanel>
+                    </GroupBox>
+                </DockPanel>
             </TabItem>
 
             <TabItem ToolTip="Сводная информация по отправленным письмам">
@@ -138,7 +207,35 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
+                    <Border BorderBrush="#FF494947" BorderThickness="3" CornerRadius="10" Margin="5">
+                        <GroupBox Header="Статистика">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
 
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="2"/>
+                                    </Style>
+                                </Grid.Resources>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Количество серверов" ></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="3" ></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Количество отправителей" ></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="10" ></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Количество получателей" ></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="2" Text="7" ></TextBlock>
+                            </Grid>
+                        </GroupBox>
+                    </Border>
                 </Grid>
             </TabItem>
         </TabControl>

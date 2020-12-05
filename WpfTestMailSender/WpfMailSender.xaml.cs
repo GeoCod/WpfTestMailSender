@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Support;
 using System.Windows;
-using System.Net;
-using System.Net.Mail;
 
 namespace WpfTestMailSender
 {
@@ -13,13 +10,10 @@ namespace WpfTestMailSender
             InitializeComponent();
         }
 
-        private void btnSendEmail_Click(object sender, RoutedEventArgs e)
+        private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            var login = LoginTb.Text;
-            var password = passwordBox.Password;
-            var address = AddressTb.Text;
-
-            Mail.SendMail(login, password, address);
+            var mail = new Mail();
+            //mail.SendMail();
         }
     }
 }
