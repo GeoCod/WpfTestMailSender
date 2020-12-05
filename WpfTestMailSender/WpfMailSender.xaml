@@ -1,0 +1,146 @@
+﻿<Window x:Class="WpfTestMailSender.WpfMailSender"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
+        xmlns:local="clr-namespace:WpfTestMailSender"
+        mc:Ignorable="d"
+        Title="Рассылка писем" Height="620" Width="1080" MinWidth="300" MinHeight="500">
+    <Grid>
+        <TabControl>
+            <TabItem ToolTip="Управление рассылкой писем">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Solid_MailBulk" Height="15" Margin="0 0 5 0" Foreground="#FF6A4628"/>
+                        <TextBlock Text="Рассылка" FontSize="14" FontWeight="Bold"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ToolBarTray Background="{x:Null}">
+                        <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
+                            <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"/>
+                            <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_UserPlus" Height="18" Foreground="#FF106610"/>
+                            </Button>
+                            <Button x:Name="btnEditSender" ToolTip="Редактировать" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_UserEdit" Height="18" Foreground="#FF101066"/>
+                            </Button>
+                            <Button x:Name="btnDeleteSender" ToolTip="Удалить" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_UserMinus" Height="18" Foreground="#FFA21717"/>
+                            </Button>
+                        </ToolBar>
+                        
+                        <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="520">
+                            <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"/>
+                            <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_CalendarPlus" Height="18" Foreground="#FF106610"/>
+                            </Button>
+                            <Button x:Name="btnEditServer" ToolTip="Редактировать" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Regular_Edit" Height="18" Foreground="#FF101066"/>
+                            </Button>
+                            <Button x:Name="btnDeleteServer" ToolTip="Удалить" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_CalendarMinus" Height="18" Foreground="#FFA21717"/>
+                            </Button>
+                        </ToolBar>
+
+                        <ToolBar x:Name="tbPlaner" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="False">
+                            <Button x:Name="btnPlaner" ToolTip="Перейти в раздел планирования рассылок">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Перейти в  планировщик" FontWeight="Bold" VerticalAlignment="Center" FontSize="11"/>
+                                    <fa:SvgAwesome Icon="Regular_Clock" Height="18" Margin="5 0 0 0" Foreground="#FFA82D00"/>
+                                </StackPanel>
+                            </Button>
+                        </ToolBar>
+
+                        <ToolBar x:Name="tbAdressee" Band="1" Header="Список адресатов" FontWeight="Bold" Width="300">
+                            <Button x:Name="btnAddAdressee" ToolTip="Добавить адресата" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_Plus" Height="18" Foreground="#FF106610"/>
+                            </Button>
+                            <Button x:Name="btnEditAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_Edit" Height="18" Foreground="#FF101066"/>
+                            </Button>
+                            <Button x:Name="btnDeleteAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0">
+                                <fa:SvgAwesome Icon="Solid_Minus" Height="18" Foreground="#FFA82D00"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+
+
+                    <GroupBox Grid.Row="1">
+                        <StackPanel>
+                            <StackPanel Width="200" Margin="10">
+                                <TextBlock Text="Login" />
+                                <TextBox Name="LoginTb" Text="test.textovitch@yandex.ru"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="200" Margin="10">
+                                <TextBlock Text="Password" />
+                                <PasswordBox x:Name="passwordBox" Height="27" />
+                            </StackPanel>
+                            <StackPanel Width="200" Margin="10">
+                                <TextBlock Text="Address" />
+                                <TextBox Name="AddressTb" Text="test.textovitch@yandex.ru"></TextBox>
+                            </StackPanel>
+                            <Button x:Name="btnSendEmail" Content="Отправить email" Click="btnSendEmail_Click" 
+                                        HorizontalAlignment="Center" Height="30" Width="200" Margin="0 10 0 0" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem ToolTip="Планирование рассылки писем">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Regular_CalendarAlt" Height="15" Margin="0 0 5 0" Foreground="#FF892B2B"/>
+                        <TextBlock Text="Планировщик" FontSize="14" FontWeight="Bold" Foreground="Black"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem ToolTip="Подготовка писем для рассылки писем">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Solid_Edit" Height="15" Margin="0 0 5 0" Foreground="#FF3D3491"/>
+                        <TextBlock Text="Редактор писем" FontSize="14" FontWeight="Bold"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem ToolTip="Сводная информация по отправленным письмам">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:SvgAwesome Icon="Regular_ChartBar" Height="15" Margin="0 0 5 0">
+                            <fa:SvgAwesome.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                            <RotateTransform Angle="51" CenterY="0.5" CenterX="0.5"/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF10FFE9"/>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                </LinearGradientBrush>
+                            </fa:SvgAwesome.Foreground>
+                        </fa:SvgAwesome>
+                        <TextBlock Text="Статистика" FontSize="14" FontWeight="Bold"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
