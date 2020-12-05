@@ -9,20 +9,6 @@
         mc:Ignorable="d"
         Title="Рассылка писем" Height="620" Width="1080" MinWidth="300" MinHeight="500">
     
-    <Window.Resources>
-        <Style x:Key="StatColumn0Style" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Arial"></Setter>
-            <Setter Property="FontSize" Value="12"></Setter>
-            <Setter Property="Margin" Value="10 5"></Setter>
-        </Style>
-        <Style x:Key="StatColumn1Style" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Arial"></Setter>
-            <Setter Property="FontSize" Value="12"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        </Style>
-    </Window.Resources>
-    
     <Grid>
         <TabControl>
             <TabItem ToolTip="Управление рассылкой писем">
@@ -241,12 +227,12 @@
                                     </Style>
                                 </Grid.Resources>
 
-                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Количество серверов" Style="{StaticResource StatColumn0Style}"></TextBlock>
-                                <TextBlock Grid.Column="1" Grid.Row="0" Text="3" Style="{StaticResource StatColumn1Style}"></TextBlock>
-                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Количество отправителей" Style="{StaticResource StatColumn0Style}"></TextBlock>
-                                <TextBlock Grid.Column="1" Grid.Row="1" Text="10" Style="{StaticResource StatColumn1Style}"></TextBlock>
-                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Количество получателей" Style="{StaticResource StatColumn0Style}"></TextBlock>
-                                <TextBlock Grid.Column="1" Grid.Row="2" Text="7" Style="{StaticResource StatColumn1Style}"></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Количество серверов" ></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="3" ></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Количество отправителей" ></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="10" ></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Количество получателей" ></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="2" Text="7" ></TextBlock>
                             </Grid>
                         </GroupBox>
                     </Border>
