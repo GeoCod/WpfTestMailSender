@@ -9,11 +9,5 @@ namespace WpfTestMailSender
         {
             InitializeComponent();
         }
-
-        private void SendButton_Click(object sender, RoutedEventArgs e)
-        {
-            var mail = new Mail();
-            //mail.SendMail();
-        }
     }
 }

@@ -23,7 +23,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ToolBarTray Background="{x:Null}">
+                    <ToolBarTray>
                         <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
                             <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"
                                       ItemsSource="{x:Static data:TestData.Senders}" SelectedIndex="0" DisplayMemberPath="Name"/>
