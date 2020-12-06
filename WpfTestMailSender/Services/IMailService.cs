@@ -1,4 +1,4 @@
-﻿namespace WpfTestMailSender.Services
+﻿namespace MailSender.Services
 {
     public interface IMailService
     {

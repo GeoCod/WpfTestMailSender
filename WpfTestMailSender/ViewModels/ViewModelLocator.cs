@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WpfTestMailSender;
+using MailSender;
 
-namespace WpfTestMailSender.ViewModels
+namespace MailSender.ViewModels
 {
     class ViewModelLocator
     {

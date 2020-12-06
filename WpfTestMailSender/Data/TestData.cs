@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WpfTestMailSender.Models;
+using MailSender.Models;
 
-namespace WpfTestMailSender.Data
+namespace MailSender.Data
 {
     static class TestData
     {

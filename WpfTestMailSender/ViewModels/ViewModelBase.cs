@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace WpfTestMailSender.ViewModels
+namespace MailSender.ViewModels
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

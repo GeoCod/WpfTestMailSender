@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WpfTestMailSender.Commands
+namespace MailSender.Commands
 {
     public class RelayCommand<T> : ICommand
     {

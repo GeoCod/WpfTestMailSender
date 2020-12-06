@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfTestMailSender.Properties
+namespace MailSender.Properties
 {
 
 

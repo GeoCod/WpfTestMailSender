@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 
-namespace WpfTestMailSender.Services
+namespace MailSender.Services
 {
     public class SmtpMailService : IMailService
     {

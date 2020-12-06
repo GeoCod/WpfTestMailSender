@@ -2,10 +2,10 @@
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
-using WpfTestMailSender.Services;
-using WpfTestMailSender.ViewModels;
+using MailSender.Services;
+using MailSender.ViewModels;
 
-namespace WpfTestMailSender
+namespace MailSender
 {
     /// <summary>Логика взаимодействия для App.xaml</summary>
     public partial class App : Application

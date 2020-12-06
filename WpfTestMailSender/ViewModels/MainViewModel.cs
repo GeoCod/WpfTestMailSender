@@ -3,12 +3,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using WpfTestMailSender.Commands;
-using WpfTestMailSender.Data;
-using WpfTestMailSender.Models;
-using WpfTestMailSender.Services;
+using MailSender.Commands;
+using MailSender.Data;
+using MailSender.Models;
+using MailSender.Services;
 
-namespace WpfTestMailSender.ViewModels
+namespace MailSender.ViewModels
 {
     class MainViewModel : ViewModelBase
     {

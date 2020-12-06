@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace WpfTestMailSender
+namespace MailSender
 {
     /// <summary>Логика взаимодействия для ExceptionWindow.xaml</summary>
     public partial class ExceptionWindow : Window

@@ -1,4 +1,4 @@
-﻿namespace WpfTestMailSender.Models
+﻿namespace MailSender.Models
 {
     public class Server
     {

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace WpfTestMailSender.Services
+namespace MailSender.Services
 {
     public class DebugMailService : IMailService
     {

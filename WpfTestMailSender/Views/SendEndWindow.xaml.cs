@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WpfTestMailSender
+namespace MailSender
 {
     /// <summary>Логика взаимодействия для SendEndWindow.xaml</summary>
     public partial class SendEndWindow : Window
