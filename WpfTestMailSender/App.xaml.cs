@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
+using WpfTestMailSender.Services;
 using WpfTestMailSender.ViewModels;
 
 namespace WpfTestMailSender
@@ -23,12 +24,11 @@ namespace WpfTestMailSender
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-//#if DEBUG
-//            services.AddTransient<IMailService, DebugMailService>();
-//#else
-//            services.AddTransient<IMailService, SmtpMailService>();
-//#endif
-
+#if DEBUG
+            services.AddTransient<IMailService, DebugMailService>();
+#else
+            services.AddTransient<IMailService, SmtpMailService>();
+#endif
             services.AddSingleton<MainViewModel>();
 
         }

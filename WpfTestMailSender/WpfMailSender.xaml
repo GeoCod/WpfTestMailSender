@@ -104,7 +104,7 @@
                             <Calendar>
 
                             </Calendar>
-                            <Button x:Name="SendButton" Margin="2">
+                            <Button x:Name="SendButton" Margin="2" Command="{Binding SendMessageCommand}">
                                 <DockPanel>
                                     <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
                                     <fa:ImageAwesome DockPanel.Dock="Right" Height="15" Icon="Brands_TelegramPlane" Margin="5 0"/>

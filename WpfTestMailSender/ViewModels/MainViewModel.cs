@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using WpfTestMailSender.Commands;
 using WpfTestMailSender.Data;
 using WpfTestMailSender.Models;
+using WpfTestMailSender.Services;
 
 namespace WpfTestMailSender.ViewModels
 {
@@ -17,12 +19,14 @@ namespace WpfTestMailSender.ViewModels
         public ICommand SendMessageCommand { get; set; }
         public void SendMessageCommand_Execute()
         {
-
+            var mailSender = _mailService.GetSender(SelectedServer.Address, SelectedServer.Port, SelectedServer.IsSSL, SelectedServer.Login, SelectedServer.Password);
+            mailSender.Send(SelectedSender.Address, SelectedRecipient.Address, SelectedMessage.Subject, SelectedMessage.Body);
         }
 
         public bool SendMessageCommand_CanExecute()
         {
-            return true;
+            if(SelectedServer != null && SelectedSender != null && SelectedRecipient != null && SelectedMessage != null) return true;
+            return false;
         }
 
         #endregion
@@ -73,11 +77,13 @@ namespace WpfTestMailSender.ViewModels
         public ICommand DeleteServerCommand { get; set; }
         public void DeleteServerCommand_Execute()
         {
-            MessageBox.Show("Del");
+            Servers.Remove(SelectedServer);
+            SelectedServer = Servers.FirstOrDefault();
         }
 
         public bool DeleteServerCommand_CanExecute()
         {
+            if (SelectedServer is null) return false;
             return true;
         }
         #endregion
@@ -210,28 +216,30 @@ namespace WpfTestMailSender.ViewModels
         public Server SelectedServer
         {
             get { return _selectedServer; }
-            set { _selectedServer = value; }
+            set { _selectedServer = value; OnPropertyChanged(); }
         }
         public Sender SelectedSender
         {
             get { return _selectedSender; }
-            set { _selectedSender = value; }
+            set { _selectedSender = value; OnPropertyChanged(); }
         }
         public Recipient SelectedRecipient
         {
             get { return _selectedRecipient; }
-            set { _selectedRecipient = value; }
+            set { _selectedRecipient = value; OnPropertyChanged(); }
         }
         public Message SelectedMessage
         {
             get { return _selectedMessage; }
-            set { _selectedMessage = value; }
+            set { _selectedMessage = value; OnPropertyChanged(); }
         }
 
-        
+        private IMailService _mailService { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(IMailService mailService)
         {
+            _mailService = mailService;
+
             SendMessageCommand = new Command(SendMessageCommand_Execute, SendMessageCommand_CanExecute);
             DialogCommand = new RelayCommand<string>(DialogCommand_Execute, DialogCommand_CanExecute);
 

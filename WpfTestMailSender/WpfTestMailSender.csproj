@@ -235,6 +235,9 @@
     <Compile Include="SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\DebugMailService.cs" />
+    <Compile Include="Services\IMailService.cs" />
+    <Compile Include="Services\SmtpMailService.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
