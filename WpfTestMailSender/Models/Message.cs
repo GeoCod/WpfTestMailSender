@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfTestMailSender.Models
 {
-    public class Messgae
+    public class Message
     {
         public string Subject { get; set; }
         public string Body { get; set; }

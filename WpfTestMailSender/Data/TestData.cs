@@ -38,11 +38,11 @@ namespace WpfTestMailSender.Data
             }
         }
 
-        public static List<Messgae> Messagess
+        public static List<Message> Messagess
         {
             get
             {
-                return Enumerable.Range(0, 10).Select(i => new Messgae() { Subject = $"subject {i}", Body = $"body {i}"}).ToList();
+                return Enumerable.Range(0, 10).Select(i => new Message() { Subject = $"subject {i}", Body = $"body {i}"}).ToList();
             }
         }
     }
