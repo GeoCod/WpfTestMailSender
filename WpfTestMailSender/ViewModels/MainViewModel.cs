@@ -13,19 +13,22 @@ namespace WpfTestMailSender.ViewModels
 
         #region Commands
 
-        public ICommand CloseProgramCommand { get; set; }
-        public ICommand DialogCommand { get; set; }
-
-        public void CloseProgramCommand_Execute()
+        #region SendMessageCommand
+        public ICommand SendMessageCommand { get; set; }
+        public void SendMessageCommand_Execute()
         {
             Application.Current.Shutdown();
         }
 
-        public bool CloseProgramCommand_CanExecute()
+        public bool SendMessageCommand_CanExecute()
         {
-            if (Title.Length < 20) return false;
             return true;
         }
+
+        #endregion
+
+        #region DialogCommand
+        public ICommand DialogCommand { get; set; }
 
         public void DialogCommand_Execute(string text)
         {
@@ -37,6 +40,8 @@ namespace WpfTestMailSender.ViewModels
             if (text is null) return false;
             return true;
         }
+
+        #endregion
 
         #endregion
 
@@ -79,9 +84,38 @@ namespace WpfTestMailSender.ViewModels
             set { _messages = value; }
         }
 
+
+        private Server _selectedServer;
+        private Sender _selectedSender;
+        private Recipient _selectedRecipient;
+        private Message _selectedMessage;
+
+        public Server SelectedServer
+        {
+            get { return _selectedServer; }
+            set { _selectedServer = value; }
+        }
+        public Sender SelectedSender
+        {
+            get { return _selectedSender; }
+            set { _selectedSender = value; }
+        }
+        public Recipient SelectedRecipient
+        {
+            get { return _selectedRecipient; }
+            set { _selectedRecipient = value; }
+        }
+        public Message SelectedMessage
+        {
+            get { return _selectedMessage; }
+            set { _selectedMessage = value; }
+        }
+
+        
+
         public MainViewModel()
         {
-            CloseProgramCommand = new Command(CloseProgramCommand_Execute, CloseProgramCommand_CanExecute);
+            SendMessageCommand = new Command(SendMessageCommand_Execute, SendMessageCommand_CanExecute);
             DialogCommand = new RelayCommand<string>(DialogCommand_Execute, DialogCommand_CanExecute);
 
             Servers = new ObservableCollection<Server>(TestData.Servers);

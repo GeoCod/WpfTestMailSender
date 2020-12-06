@@ -28,7 +28,7 @@
                     <ToolBarTray>
                         <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
                             <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"
-                                      ItemsSource="{Binding Senders}" SelectedIndex="0" DisplayMemberPath="Name"/>
+                                      ItemsSource="{Binding Senders}" SelectedIndex="0" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSender}"/>
                             <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_UserPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -42,7 +42,7 @@
                         
                         <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="520">
                             <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"
-                                      ItemsSource="{Binding Servers}" SelectedIndex="0" DisplayMemberPath="FullAddress"/>
+                                      ItemsSource="{Binding Servers}" SelectedIndex="0" DisplayMemberPath="FullAddress" SelectedItem="{Binding SelectedServer}"/>
                             <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0">
                                 <fa:SvgAwesome Icon="Solid_CalendarPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
@@ -77,7 +77,7 @@
                     </ToolBarTray>
 
 
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding Recipients}" AutoGenerateColumns="False">
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding Recipients}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedRecipient}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="Auto"/>
                             <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="200"/>
@@ -170,7 +170,8 @@
                 </TabItem.Header>
                 <DockPanel>
                     <GroupBox DockPanel.Dock="Left" Header="Письма">
-                        <ListBox x:Name="MessageList" DockPanel.Dock="Left" Width="200" ItemsSource="{Binding Messages}" DisplayMemberPath="Subject">
+                        <ListBox x:Name="MessageList" DockPanel.Dock="Left" Width="200" 
+                                 ItemsSource="{Binding Messages}" DisplayMemberPath="Subject" SelectedItem="{Binding SelectedMessage}">
  
                         </ListBox>
                     </GroupBox>
