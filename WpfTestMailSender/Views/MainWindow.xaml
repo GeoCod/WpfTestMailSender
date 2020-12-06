@@ -64,13 +64,13 @@
                         </ToolBar>
 
                         <ToolBar x:Name="tbAdressee" Band="1" Header="Список адресатов" FontWeight="Bold" Width="220">
-                            <Button x:Name="btnAddAdressee" ToolTip="Добавить адресата" Margin="0 0 3 0" Command="{Binding AddAddresseeCommand}">
+                            <Button x:Name="btnAddAdressee" ToolTip="Добавить адресата" Margin="0 0 3 0" Command="{Binding AddRecipientCommand}">
                                 <fa:SvgAwesome Icon="Solid_Plus" Height="18" Foreground="#FF106610"/>
                             </Button>
-                            <Button x:Name="btnEditAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0" Command="{Binding EditAddresseeCommand}">
+                            <Button x:Name="btnEditAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0" Command="{Binding EditRecipientCommand}">
                                 <fa:SvgAwesome Icon="Solid_Edit" Height="18" Foreground="#FF101066"/>
                             </Button>
-                            <Button x:Name="btnDeleteAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0" Command="{Binding DeleteAddresseeCommand}">
+                            <Button x:Name="btnDeleteAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0" Command="{Binding DeleteRecipientCommand}">
                                 <fa:SvgAwesome Icon="Solid_Minus" Height="18" Foreground="#FFA82D00"/>
                             </Button>
                         </ToolBar>

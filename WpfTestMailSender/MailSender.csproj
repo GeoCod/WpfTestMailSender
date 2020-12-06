@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9BE61738-56B2-4FB2-A9D6-A9D4DBE37BD4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WpfTestMailSender</RootNamespace>
-    <AssemblyName>WpfTestMailSender</AssemblyName>
+    <RootNamespace>MailSender</RootNamespace>
+    <AssemblyName>MailSender</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -222,6 +222,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\LambdaCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Data\PasswordClass.cs" />
     <Compile Include="Data\TestData.cs" />
@@ -235,10 +236,7 @@
     <Compile Include="Views\SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\DebugMailService.cs" />
-    <Compile Include="Services\IMailService.cs" />
-    <Compile Include="Services\SmtpMailService.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

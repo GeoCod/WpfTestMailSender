@@ -2,8 +2,9 @@
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
-using MailSender.Services;
+using MailSender.lib.Services;
 using MailSender.ViewModels;
+using MailSender.lib.Interfaces;
 
 namespace MailSender
 {
@@ -29,7 +30,7 @@ namespace MailSender
 #else
             services.AddTransient<IMailService, SmtpMailService>();
 #endif
-            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<MainWindowViewModel>();
 
         }
 
