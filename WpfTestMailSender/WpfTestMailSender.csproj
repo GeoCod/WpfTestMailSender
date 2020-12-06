@@ -81,6 +81,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Data\PasswordClass.cs" />
     <Compile Include="Data\TestData.cs" />
     <Compile Include="ExceptionWindow.xaml.cs">
@@ -93,6 +95,8 @@
     <Compile Include="SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="WpfMailSender.xaml.cs">
       <DependentUpon>WpfMailSender.xaml</DependentUpon>
       <SubType>Code</SubType>
