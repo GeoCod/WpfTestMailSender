@@ -1,5 +1,4 @@
-﻿using MailSender.lib;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MailSender
 {

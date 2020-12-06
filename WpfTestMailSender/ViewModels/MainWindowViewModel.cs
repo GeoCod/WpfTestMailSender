@@ -270,6 +270,44 @@ namespace MailSender.ViewModels
         }
         #endregion
 
+
+        #region SendMailMessageCommand
+        private ICommand _SendMailMessageCommand;
+
+        public ICommand SendMailMessageCommand
+        {
+            get
+            {
+                if (_SendMailMessageCommand is null)
+                    _SendMailMessageCommand = new LambdaCommand(OnSendMailMessageCommandExecuted, CanSendMailMessageCommandExecute);
+                return _SendMailMessageCommand;
+            }
+        }
+
+        private bool CanSendMailMessageCommandExecute(object p)
+        {
+            return SelectedServer != null
+            && SelectedSender != null
+            && SelectedRecipient != null
+            && SelectedMessage != null;
+        }
+        private void OnSendMailMessageCommandExecuted(object p)
+        {
+            var server = SelectedServer;
+            var client = _mailService.GetSender(
+            server.Address, server.Port, server.IsSSL,
+            server.Login, server.Password);
+            var sender = SelectedSender;
+            var recipient = SelectedRecipient;
+            var message = SelectedMessage;
+            client.Send(
+            server.Address, recipient.Address,
+            message.Subject, message.Body);
+        }
+
+        #endregion
+
+
         #endregion
 
         public DateTime CurrentTime

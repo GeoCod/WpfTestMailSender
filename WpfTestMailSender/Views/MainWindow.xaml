@@ -101,10 +101,8 @@
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="Календарь" Grid.Column="0">
                         <StackPanel Width="180">
-                            <Calendar>
-
-                            </Calendar>
-                            <Button x:Name="SendButton" Margin="2" Command="{Binding SendMessageCommand}">
+                            <Calendar></Calendar>
+                            <Button x:Name="SendButton" Margin="2" Command="{Binding SendMailMessageCommand}">
                                 <DockPanel>
                                     <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
                                     <fa:ImageAwesome DockPanel.Dock="Right" Height="15" Icon="Brands_TelegramPlane" Margin="5 0"/>
