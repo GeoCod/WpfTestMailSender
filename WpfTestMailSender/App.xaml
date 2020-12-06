@@ -5,6 +5,6 @@
              xmlns:vm="clr-namespace:WpfTestMailSender.ViewModels"
              StartupUri="WpfMailSender.xaml">
     <Application.Resources>
-        <!--<vm:ViewModelLocator x:Key="Locator"/>-->
+        <vm:ViewModelLocator x:Key="Locator"/>
     </Application.Resources>
 </Application>

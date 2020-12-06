@@ -8,7 +8,7 @@ using WpfTestMailSender.Models;
 
 namespace WpfTestMailSender.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    class MainViewModel : ViewModelBase
     {
 
         #region Commands
