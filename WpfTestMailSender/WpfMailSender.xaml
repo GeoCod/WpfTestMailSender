@@ -26,35 +26,35 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ToolBarTray>
-                        <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="520">
+                        <ToolBar x:Name="tbSender" Header="Выбрать отправителя" FontWeight="Bold" MinWidth="450">
                             <ComboBox Width="200" x:Name="SenderList" ToolTip="Выбрать email отправителя"
                                       ItemsSource="{Binding Senders}" SelectedIndex="0" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSender}"/>
-                            <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0">
+                            <Button x:Name="btnAddSender" ToolTip="Добавить" Margin="0 0 3 0" Command="{Binding AddSenderCommand}">
                                 <fa:SvgAwesome Icon="Solid_UserPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
-                            <Button x:Name="btnEditSender" ToolTip="Редактировать" Margin="0 0 3 0">
+                            <Button x:Name="btnEditSender" ToolTip="Редактировать" Margin="0 0 3 0" Command="{Binding EditSenderCommand}">
                                 <fa:SvgAwesome Icon="Solid_UserEdit" Height="18" Foreground="#FF101066"/>
                             </Button>
-                            <Button x:Name="btnDeleteSender" ToolTip="Удалить" Margin="0 0 3 0">
+                            <Button x:Name="btnDeleteSender" ToolTip="Удалить" Margin="0 0 3 0" Command="{Binding DeleteSenderCommand}">
                                 <fa:SvgAwesome Icon="Solid_UserMinus" Height="18" Foreground="#FFA21717"/>
                             </Button>
                         </ToolBar>
                         
-                        <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="520">
+                        <ToolBar x:Name="tbServer" Header="Выбрать сервер" FontWeight="Bold" Band="1" MinWidth="450">
                             <ComboBox Width="200" x:Name="ServerList" ToolTip="Выбрать smtp-сервер" Margin="35 0 0 0"
                                       ItemsSource="{Binding Servers}" SelectedIndex="0" DisplayMemberPath="FullAddress" SelectedItem="{Binding SelectedServer}"/>
-                            <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0">
+                            <Button x:Name="btnAddServer" ToolTip="Добавить" Margin="0 0 3 0" Command="{Binding AddServerCommand}">
                                 <fa:SvgAwesome Icon="Solid_CalendarPlus" Height="18" Foreground="#FF106610"/>
                             </Button>
-                            <Button x:Name="btnEditServer" ToolTip="Редактировать" Margin="0 0 3 0">
+                            <Button x:Name="btnEditServer" ToolTip="Редактировать" Margin="0 0 3 0" Command="{Binding EditServerCommand}">
                                 <fa:SvgAwesome Icon="Regular_Edit" Height="18" Foreground="#FF101066"/>
                             </Button>
-                            <Button x:Name="btnDeleteServer" ToolTip="Удалить" Margin="0 0 3 0">
+                            <Button x:Name="btnDeleteServer" ToolTip="Удалить" Margin="0 0 3 0" Command="{Binding DeleteServerCommand}">
                                 <fa:SvgAwesome Icon="Solid_CalendarMinus" Height="18" Foreground="#FFA21717"/>
                             </Button>
                         </ToolBar>
 
-                        <ToolBar x:Name="tbPlaner" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="False">
+                        <ToolBar x:Name="tbPlaner" Width="220" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="False">
                             <Button x:Name="btnPlaner" ToolTip="Перейти в раздел планирования рассылок">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Перейти в  планировщик" FontWeight="Bold" VerticalAlignment="Center" FontSize="11"/>
@@ -63,14 +63,14 @@
                             </Button>
                         </ToolBar>
 
-                        <ToolBar x:Name="tbAdressee" Band="1" Header="Список адресатов" FontWeight="Bold" Width="300">
-                            <Button x:Name="btnAddAdressee" ToolTip="Добавить адресата" Margin="0 0 3 0">
+                        <ToolBar x:Name="tbAdressee" Band="1" Header="Список адресатов" FontWeight="Bold" Width="220">
+                            <Button x:Name="btnAddAdressee" ToolTip="Добавить адресата" Margin="0 0 3 0" Command="{Binding AddAddresseeCommand}">
                                 <fa:SvgAwesome Icon="Solid_Plus" Height="18" Foreground="#FF106610"/>
                             </Button>
-                            <Button x:Name="btnEditAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0">
+                            <Button x:Name="btnEditAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0" Command="{Binding EditAddresseeCommand}">
                                 <fa:SvgAwesome Icon="Solid_Edit" Height="18" Foreground="#FF101066"/>
                             </Button>
-                            <Button x:Name="btnDeleteAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0">
+                            <Button x:Name="btnDeleteAdressee" ToolTip="Редактировать адресата" Margin="0 0 3 0" Command="{Binding DeleteAddresseeCommand}">
                                 <fa:SvgAwesome Icon="Solid_Minus" Height="18" Foreground="#FFA82D00"/>
                             </Button>
                         </ToolBar>

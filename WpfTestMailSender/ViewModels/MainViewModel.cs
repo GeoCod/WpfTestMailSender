@@ -17,7 +17,7 @@ namespace WpfTestMailSender.ViewModels
         public ICommand SendMessageCommand { get; set; }
         public void SendMessageCommand_Execute()
         {
-            Application.Current.Shutdown();
+
         }
 
         public bool SendMessageCommand_CanExecute()
@@ -41,6 +41,123 @@ namespace WpfTestMailSender.ViewModels
             return true;
         }
 
+        #endregion
+
+        #region AddServerCommand
+        public ICommand AddServerCommand { get; set; }
+        public void AddServerCommand_Execute()
+        {
+            MessageBox.Show("add");
+        }
+
+        public bool AddServerCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region EditServerCommand
+        public ICommand EditServerCommand { get; set; }
+        public void EditServerCommand_Execute()
+        {
+            MessageBox.Show("Edit");
+        }
+
+        public bool EditServerCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region DeleteServerCommand
+        public ICommand DeleteServerCommand { get; set; }
+        public void DeleteServerCommand_Execute()
+        {
+            MessageBox.Show("Del");
+        }
+
+        public bool DeleteServerCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region AddSenderCommand
+        public ICommand AddSenderCommand { get; set; }
+        public void AddSenderCommand_Execute()
+        {
+            MessageBox.Show("add");
+        }
+
+        public bool AddSenderCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region EditSenderCommand
+        public ICommand EditSenderCommand { get; set; }
+        public void EditSenderCommand_Execute()
+        {
+            MessageBox.Show("Edit");
+        }
+
+        public bool EditSenderCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region DeleteSenderCommand
+        public ICommand DeleteSenderCommand { get; set; }
+        public void DeleteSenderCommand_Execute()
+        {
+            MessageBox.Show("Del");
+        }
+
+        public bool DeleteSenderCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region AddAddresseeCommand
+        public ICommand AddAddresseeCommand { get; set; }
+        public void AddAddresseeCommand_Execute()
+        {
+            MessageBox.Show("add");
+        }
+
+        public bool AddAddresseeCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region EditAddresseeCommand
+        public ICommand EditAddresseeCommand { get; set; }
+        public void EditAddresseeCommand_Execute()
+        {
+            MessageBox.Show("Edit");
+        }
+
+        public bool EditAddresseeCommand_CanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region DeleteAddresseeCommand
+        public ICommand DeleteAddresseeCommand { get; set; }
+        public void DeleteAddresseeCommand_Execute()
+        {
+            MessageBox.Show("Del");
+        }
+
+        public bool DeleteAddresseeCommand_CanExecute()
+        {
+            return true;
+        }
         #endregion
 
         #endregion
@@ -117,6 +234,18 @@ namespace WpfTestMailSender.ViewModels
         {
             SendMessageCommand = new Command(SendMessageCommand_Execute, SendMessageCommand_CanExecute);
             DialogCommand = new RelayCommand<string>(DialogCommand_Execute, DialogCommand_CanExecute);
+
+            AddServerCommand = new Command(AddServerCommand_Execute, AddServerCommand_CanExecute);
+            EditServerCommand = new Command(EditServerCommand_Execute, EditServerCommand_CanExecute);
+            DeleteServerCommand = new Command(DeleteServerCommand_Execute, DeleteServerCommand_CanExecute);
+
+            AddSenderCommand = new Command(AddSenderCommand_Execute, AddSenderCommand_CanExecute);
+            EditSenderCommand = new Command(EditSenderCommand_Execute, EditSenderCommand_CanExecute);
+            DeleteSenderCommand = new Command(DeleteSenderCommand_Execute, DeleteSenderCommand_CanExecute);
+
+            AddAddresseeCommand = new Command(AddAddresseeCommand_Execute, AddAddresseeCommand_CanExecute);
+            EditAddresseeCommand = new Command(EditAddresseeCommand_Execute, EditAddresseeCommand_CanExecute);
+            DeleteAddresseeCommand = new Command(DeleteAddresseeCommand_Execute, DeleteAddresseeCommand_CanExecute);
 
             Servers = new ObservableCollection<Server>(TestData.Servers);
             Senders = new ObservableCollection<Sender>(TestData.Senders);
